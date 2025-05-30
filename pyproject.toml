@@ -8,6 +8,8 @@ dependencies = [
     "jupyter>=1.1.1",
     "jupyter-ai>=2.31.4",
     "jupyter-ai-magics>=2.31.4",
+    "langchain-openai>=0.3.18",
     "langgraph>=0.4.7",
     "langgraph-cli[inmem]>=0.2.10",
+    "langgraph-supervisor>=0.0.26",
 ]
