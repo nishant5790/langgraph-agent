@@ -1,0 +1,105 @@
+agents:
+  - name: "Filter Agent"
+    agent_id: "filter_agent"
+    api_url: "http://localhost:5001/process"
+    description: "Specialized agent for filtering data, creating search queries, and finding specific information from datasets"
+    keywords:
+      - "filter"
+      - "search"
+      - "find"
+      - "query"
+      - "data"
+      - "show"
+      - "display"
+      - "select"
+      - "where"
+      - "criteria"
+    tools:
+      - "data_filter"
+      - "search_engine"
+      - "query_builder"
+    headers:
+      Content-Type: "application/json"
+      Authorization: "test-token"
+    handoff_conditions:
+      - "user asks for actions after filtering"
+      - "user requests data export"
+      - "user wants to create campaigns"
+    priority: 2
+    timeout: 30
+    enabled: true
+
+  - name: "Action Agent"
+    agent_id: "action_agent"
+    api_url: "http://localhost:5002/process"
+    description: "Handles multiple actions like outreach campaigns, CSV exports, Marketo integration, and data processing tasks"
+    keywords:
+      - "add"
+      - "create"
+      - "export"
+      - "csv"
+      - "marketo"
+      - "outreach"
+      - "campaign"
+      - "action"
+      - "execute"
+      - "process"
+      - "send"
+      - "integrate"
+      - "upload"
+      - "download"
+    tools:
+      - "add_outreach"
+      - "get_csv"
+      - "add_marketo"
+      - "campaign_manager"
+      - "data_exporter"
+      - "integration_hub"
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Bearer action-agent-token"
+      X-API-Version: "v1"
+    handoff_conditions:
+      - "user asks for data filtering before action"
+      - "user requests specific data analysis"
+      - "user needs search results"
+    priority: 3
+    timeout: 45
+    enabled: true
+
+  - name: "Analytics Agent"
+    agent_id: "analytics_agent"
+    api_url: "http://localhost:5003/process"
+    description: "Provides data insights, analytics, reports, and statistical analysis"
+    keywords:
+      - "analytics"
+      - "insights"
+      - "reports"
+      - "dashboard"
+      - "statistics"
+      - "analyze"
+      - "metrics"
+      - "performance"
+      - "trends"
+      - "visualization"
+    tools:
+      - "data_analyzer"
+      - "report_generator"
+      - "dashboard_creator"
+      - "statistical_engine"
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Bearer analytics-agent-token"
+    handoff_conditions:
+      - "user asks for raw data after analysis"
+      - "user requests specific actions based on insights"
+    priority: 1
+    timeout: 60
+    enabled: true
+
+# System configuration
+system:
+  max_handoffs: 5
+  default_timeout: 30
+  log_level: "INFO"
+  memory_retention_days: 7
